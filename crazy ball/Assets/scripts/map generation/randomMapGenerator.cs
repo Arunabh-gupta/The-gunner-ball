@@ -14,7 +14,7 @@ public class randomMapGenerator : MonoBehaviour
     private float xmin = -50;
     private float xmax = 50;
     private float ymax = 60;
-    private float ymin = 0;
+    private float ymin = -5;
 
     //coordinate range for the obstackle
 

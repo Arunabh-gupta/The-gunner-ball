@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
-    
-
     //grapple gun feature
     Vector3 direction;
     [SerializeField]
@@ -14,37 +12,49 @@ public class Gun : MonoBehaviour
 
     private LineRenderer Rope;
     private SpringJoint2D grappleJoint;
-
     Vector3 grapplePoint;
     //grapple gun feature
 
     // shooting pew pew
+    public GameObject bullet_prefab;
+    private gun_aim Gun_aim;
+    private Vector3 shoot_dir;
+    [SerializeField]
+    private float bullet_speed = 0f;
 
     // shooting pew pew
     void Start()
     {
+        // grapple gun
         grappleJoint = gameObject.AddComponent<SpringJoint2D>();
         grappleJoint.enabled = false;   
         Rope = gameObject.GetComponent<LineRenderer>();
+        // grapple gun
+
+        // gun shooting
+        Gun_aim = gameObject.GetComponent<gun_aim>();
+        // gun shooting
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0)){
+        // grapple gun
+        if(Input.GetMouseButtonDown(1)){
             StartGrapple();
-            
-
         }
-        else if(Input.GetMouseButtonUp(0)){
-            StopGrapple();
-            
+        else if(Input.GetMouseButtonUp(1)){
+            StopGrapple();        
         }
         DrawRope();
+        // grapple gun
+
+        //gun shooting 
+        if(Input.GetMouseButtonDown(0)){
+            firing();
+        }
+        //gun shooting 
     }
-
-
-
+    // grapple gun feature functions
     void StartGrapple()
     {
         direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - shootPoint.position;
@@ -83,4 +93,17 @@ public class Gun : MonoBehaviour
             EndLine();
         }
     } 
+    // grapple gun feature functions
+
+
+    // bullet firing
+    void firing(){
+        shoot_dir = Gun_aim.dir_vector;
+        GameObject fired_bullet = Instantiate(bullet_prefab, shootPoint.position, Quaternion.identity);
+        fired_bullet.GetComponent<Rigidbody2D>().velocity = -shoot_dir * bullet_speed;
+        // bullets destroying is written in bullet script
+    } 
+    //bullet firing
+   
+
 }

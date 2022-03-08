@@ -7,7 +7,8 @@ public class gun_aim : MonoBehaviour
     
 
     //for gun aim
-    Vector2 dir_vector;
+    [HideInInspector]
+    public Vector2 dir_vector;
     private float target_angle;
     Rigidbody2D gun_rb;
     [SerializeField]

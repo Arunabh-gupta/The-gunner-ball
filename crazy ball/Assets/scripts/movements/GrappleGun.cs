@@ -17,7 +17,7 @@ public class GrappleGun : MonoBehaviour
     SpringJoint2D grapplingHook;
     Vector3 grapplePoint;
     // grapple gun function
-
+    float time = 20f;
     void Start()
     {
         
@@ -53,7 +53,7 @@ public class GrappleGun : MonoBehaviour
     }
     
 
-    void StartGrapple()
+    async void StartGrapple()
     {
         direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - shootPoint.transform.position;
         RaycastHit2D hit = Physics2D.Raycast(shootPoint.transform.position, direction, dis);
@@ -65,6 +65,10 @@ public class GrappleGun : MonoBehaviour
             grapplingHook.autoConfigureConnectedAnchor = false;
             grapplingHook.distance = hit.distance;
             grapplingHook.dampingRatio = 10f;
+            // gun should look in the direction of the raycast
+
+            // float look_angle = (Mathf.Atan2(direction.x, -direction.y) + Mathf.PI / 2) * Mathf.Rad2Deg;
+            // gameObject.GetComponent<Rigidbody2D>().MoveRotation(Mathf.LerpAngle(gameObject.GetComponent<Rigidbody2D>().rotation, look_angle, Time.deltaTime * time));
             
 
         }
