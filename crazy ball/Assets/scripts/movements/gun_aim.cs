@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class gun_aim : MonoBehaviour
 {
-    
+
 
     //for gun aim
     [HideInInspector]
@@ -18,14 +18,16 @@ public class gun_aim : MonoBehaviour
     {
         gun_rb = gameObject.GetComponent<Rigidbody2D>();
     }
-
-    
-    void Update()
+    private void Update()
     {
-        //gun aim rotation
-        dir_vector = (Vector2)transform.position - (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        target_angle = (Mathf.Atan2(dir_vector.x, -dir_vector.y) + Mathf.PI / 2) * Mathf.Rad2Deg;
-        gun_rb.MoveRotation(Mathf.LerpAngle(gun_rb.rotation, target_angle, Time.deltaTime * time));
-        //gun aim rotation
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 dir = (Vector2)transform.position - mousePos;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle+180));
+
     }
+
+
+
+
 }

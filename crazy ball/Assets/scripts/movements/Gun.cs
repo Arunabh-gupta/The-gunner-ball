@@ -2,108 +2,46 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gun : MonoBehaviour
+public class Gun 
 {
-    //grapple gun feature
-    Vector3 direction;
-    [SerializeField]
-    private float dis;
-    public Transform shootPoint;
-
-    private LineRenderer Rope;
-    private SpringJoint2D grappleJoint;
-    Vector3 grapplePoint;
-    //grapple gun feature
-
-    // shooting pew pew
-    public GameObject bullet_prefab;
-    private gun_aim Gun_aim;
-    private Vector3 shoot_dir;
-    [SerializeField]
-    private float bullet_speed = 0f;
-
-    // shooting pew pew
-    void Start()
-    {
-        // grapple gun
-        grappleJoint = gameObject.AddComponent<SpringJoint2D>();
-        grappleJoint.enabled = false;   
-        Rope = gameObject.GetComponent<LineRenderer>();
-        // grapple gun
-
-        // gun shooting
-        Gun_aim = gameObject.GetComponent<gun_aim>();
-        // gun shooting
+    
+    private float fireRate;
+    private float bullets;
+    private float spread;
+    private float speed;
+    private int damage;
+    private string description;
+    
+    public Gun(float fireRate, float bullets,float spread, float speed, int damage, string desc) {
+        
+        this.fireRate = fireRate;
+        this.bullets = bullets;
+        this.spread = spread;
+        this.speed = speed;
+        this.description = desc;
+        this.damage = damage;
+    }
+    
+    public float GetFireRate() {
+        return fireRate;
     }
 
-    void Update()
-    {
-        // grapple gun
-        if(Input.GetMouseButtonDown(1)){
-            StartGrapple();
-        }
-        else if(Input.GetMouseButtonUp(1)){
-            StopGrapple();        
-        }
-        DrawRope();
-        // grapple gun
-
-        //gun shooting 
-        if(Input.GetMouseButtonDown(0)){
-            firing();
-        }
-        //gun shooting 
+    public float GetBullets() {
+        return bullets;
     }
-    // grapple gun feature functions
-    void StartGrapple()
-    {
-        direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - shootPoint.position;
-        RaycastHit2D hit = Physics2D.Raycast(shootPoint.position, direction, dis);
-        if (hit.collider != null)
-        {
-            grapplePoint = hit.point;
-            grappleJoint.enabled = true;
-            grappleJoint.connectedAnchor = grapplePoint;
-            grappleJoint.autoConfigureConnectedAnchor = false;
-            grappleJoint.distance = hit.distance*Time.deltaTime*0.5f;
-            grappleJoint.dampingRatio = 10f;
-        }        
+     public float GetSpread() {
+        return spread;
     }
-    void StopGrapple(){
-        grappleJoint.enabled = false;
+    
+    public float GetSpeed() {
+        return speed;
     }
 
-    void Rope_Line(Vector3 start_point, Vector3 end_point){
-        Rope.positionCount = 2;
-        Vector3[] points = new Vector3[2];
-        points[0] = start_point;
-        points[1] = end_point;
-        Rope.SetPositions(points);
+    public string GetDescription() {
+        return description;
     }
 
-    void EndLine(){
-        Rope.positionCount = 0;
+    public int GetDamage() {
+        return damage;
     }
-
-    void DrawRope(){
-        if(grappleJoint.isActiveAndEnabled){
-            Rope_Line(shootPoint.position, grapplePoint);
-        }
-        else{
-            EndLine();
-        }
-    } 
-    // grapple gun feature functions
-
-
-    // bullet firing
-    void firing(){
-        shoot_dir = Gun_aim.dir_vector;
-        GameObject fired_bullet = Instantiate(bullet_prefab, shootPoint.position, Quaternion.identity);
-        fired_bullet.GetComponent<Rigidbody2D>().velocity = -shoot_dir * bullet_speed;
-        // bullets destroying is written in bullet script
-    } 
-    //bullet firing
-   
-
 }
