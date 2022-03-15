@@ -12,7 +12,7 @@ public class gun_aim : MonoBehaviour
     private float target_angle;
     Rigidbody2D gun_rb;
     [SerializeField]
-    private float time = 100f;
+    // private float time = 100f;
     // gun aim
     void Start()
     {

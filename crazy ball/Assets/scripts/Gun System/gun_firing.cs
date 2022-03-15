@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class gun_firing : MonoBehaviour
 {
+    public float recoil;
     private Gun gun; // the gun object with its features 
     Gun[] gun_list = {Gun_Container.Pistol, Gun_Container.Shotgun, Gun_Container.revolver}; // list of all the guns
     private bool readyTofire = true; // don't what's this is for😪😪. Might use in future 
@@ -32,15 +33,17 @@ public class gun_firing : MonoBehaviour
     // firing of bullets function 
     private void Fire(Gun gun){
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition); 
+        
+        Vector2 dir = mousePos - (Vector2)Nozzle.position;
+        dir.Normalize();
         for(int i=0; i<gun.GetBullets(); i++){
             timestamp = Time.time + perShotDelay;
             GameObject bullet = Instantiate(bullet_prefab, Nozzle.position, Quaternion.identity);
             float speed = gun.GetSpeed();
-            Vector2 dir = mousePos - (Vector2)Nozzle.position;
-            dir.Normalize();
             Vector2 pdir = Vector2.Perpendicular(dir)*Random.Range(-gun.GetSpread(), gun.GetSpread());
             bullet.GetComponent<Rigidbody2D>().velocity = (dir+pdir) * gun.GetSpeed();
 
+        gameObject.GetComponent<Rigidbody2D>().AddForce(-dir*recoil*Time.deltaTime, ForceMode2D.Impulse);
         }
 
     }

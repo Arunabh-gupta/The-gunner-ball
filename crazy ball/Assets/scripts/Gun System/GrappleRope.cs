@@ -13,7 +13,7 @@ public class GrappleRope : MonoBehaviour
     private LineRenderer Rope;
     private SpringJoint2D grappleJoint;
     Vector3 grapplePoint;
-    float time = 20f;
+    // float time = 20f;
     //grapple gun feature
 
     void Start()
@@ -54,8 +54,8 @@ public class GrappleRope : MonoBehaviour
             grappleJoint.enabled = true;
             grappleJoint.connectedAnchor = grapplePoint;
             grappleJoint.autoConfigureConnectedAnchor = false;
-            grappleJoint.distance = hit.distance*Time.deltaTime*0.5f;
-            grappleJoint.dampingRatio = 10f;
+            grappleJoint.distance = hit.distance*Time.deltaTime;
+            // grappleJoint.dampingRatio = 10f;
             
         }        
     }
