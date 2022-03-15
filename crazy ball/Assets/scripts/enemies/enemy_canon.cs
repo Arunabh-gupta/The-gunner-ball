@@ -15,7 +15,7 @@ public class enemy_canon : MonoBehaviour
     [SerializeField]
     private float canon_bullet_speed = 10f;
     [SerializeField]
-    private float canon_rotation_speed = 1.5f;
+    private float canon_rotation_speed = 250f;
     //for time delay between each shot of bullet
     private float timestamp = 0.0f;
     private float DelayPerShot = 0.5f;
@@ -29,10 +29,9 @@ public class enemy_canon : MonoBehaviour
         if (target_dir.magnitude <= looking_Radius && Time.time > timestamp)
         {
             fire_cannon();
-            Debug.Log(target_dir.magnitude);
-
+            
         }
-
+            
         lookAt();
 
     }

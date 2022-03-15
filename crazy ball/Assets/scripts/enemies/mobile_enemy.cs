@@ -15,7 +15,7 @@ public class mobile_enemy : MonoBehaviour
     [SerializeField]
     private float enemy_bullet_speed = 10f;
     [SerializeField]
-    private float enemy_rotation_speed = 1.5f;
+    private float enemy_rotation_speed = 250f;
     [SerializeField]
     private float enemy_movement_speed = 20f;
     //for time delay between each shot of bullet
@@ -45,7 +45,7 @@ public class mobile_enemy : MonoBehaviour
         float target_angle = Mathf.Atan2(target_dir.y, target_dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler (0, 0, target_angle), enemy_rotation_speed * Time.deltaTime);
         transform.position = Vector2.MoveTowards(transform.position, target_player.transform.position, enemy_movement_speed * Time.deltaTime);
-        Debug.Log(transform.position);
+        // Debug.Log(transform.position);
 
     }
     // to look at the player gameObject ans move towards it
@@ -55,9 +55,9 @@ public class mobile_enemy : MonoBehaviour
     {
         timestamp = DelayPerShot + Time.time;
         GameObject canon_bullet = Instantiate(enemy_bullet_prefab, (Vector2)shootpoint.position, Quaternion.identity);
-        Vector2 canon_bullet_direction = target_dir;
-        canon_bullet_direction.Normalize();
-        canon_bullet.GetComponent<Rigidbody2D>().velocity = canon_bullet_direction * enemy_bullet_speed;
+        Vector2 enemy_bullet_direction = target_dir;
+        enemy_bullet_direction.Normalize();
+        canon_bullet.GetComponent<Rigidbody2D>().velocity = enemy_bullet_direction * enemy_bullet_speed;
     }
     // enemy bullet firing
 }
