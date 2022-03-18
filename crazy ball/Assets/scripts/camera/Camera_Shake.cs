@@ -5,7 +5,7 @@ public class Camera_Shake : MonoBehaviour
 {
     //The idea is to attach a spring joint to the camera gameobject and give some force to it so that it can come back and forth to create the effect
 
-    // here the Main camera is made the child of an empty game object(camera_follower) and camera follow script is attached on that. The camera_follower game object has given a rigidbody2d and that rigidbody is given to the attached rigidbody field in the spring joint in the MainCamera. Now the magnitude field is given a value of 50 and the linear drag of the camera rigidbody is increased to 15 so that the shaking can stop after a moment.   
+    // here the Main camera is made the child of an empty game object(camera_follower) and camera follow script is attached on that. The camera_follower game object has given a rigidbody2d and that rigidbody is given to the attached rigidbody field in the spring joint in the MainCamera. Now the magnitude field is given a value of 50 and the linear drag of the camera rigidbody is increased to 15 so that the shaking can stop after a moment. The frequency of spring joints is also increased so that the oscillations are quick   
     SpringJoint2D shakeJoint;
     private void Start()
     {

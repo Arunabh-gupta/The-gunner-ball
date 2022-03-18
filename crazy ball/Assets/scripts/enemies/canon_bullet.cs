@@ -8,6 +8,7 @@ public class canon_bullet : MonoBehaviour
     // private void Start() {
     //     cam = FindObjectOfType<Camera>();
     // }
+    public float damage;
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.collider.tag == "obstacle"){
             Destroy(gameObject);

@@ -156,7 +156,7 @@ GameObject:
   - component: {fileID: 2560326696613396396}
   m_Layer: 0
   m_Name: enemy2
-  m_TagString: Untagged
+  m_TagString: mobile enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -239,10 +239,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94cc873a964048643a123220d6508354, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 5
   target_player: {fileID: 0}
   shootpoint: {fileID: 2560326695759009606}
   looking_Radius: 5
-  enemy_bullet_prefab: {fileID: 8946333522681443906, guid: 627f2ebfc7457454199948977d37d167, type: 3}
+  enemy_bullet_prefab: {fileID: 7666119384075112396, guid: cf02e4629db67f142865c236d0372c8b, type: 3}
   enemy_bullet_speed: 10
   enemy_rotation_speed: 250
   enemy_movement_speed: 2

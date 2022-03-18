@@ -47,6 +47,7 @@ public class gun_firing : MonoBehaviour
             float speed = gun.GetSpeed();
             Vector2 pdir = Vector2.Perpendicular(dir) * Random.Range(-gun.GetSpread(), gun.GetSpread());
             bullet.GetComponent<Rigidbody2D>().AddForce((dir + pdir) * gun.GetSpeed(), ForceMode2D.Impulse);
+            bullet.GetComponent<bullet>().damage = gun.GetDamage();
         }
     }
     // firing of bullets function

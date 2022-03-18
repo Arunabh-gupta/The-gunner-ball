@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class enemy_canon : MonoBehaviour
 {
+
+    [SerializeField]
+    private float health = healths.canonHealth;
     [SerializeField]
     private GameObject target_player;
     [SerializeField]
@@ -13,15 +16,23 @@ public class enemy_canon : MonoBehaviour
     [SerializeField]
     private GameObject canon_bullet_prefab;
     [SerializeField]
-    private float canon_bullet_speed = 10f;
+    private float canon_bullet_speed;
     [SerializeField]
     private float canon_rotation_speed = 250f;
     //for time delay between each shot of bullet
     private float timestamp = 0.0f;
-    private float DelayPerShot = 0.5f;
+    private float DelayPerShot;
     //for time delay between each shot of bullet
     Vector2 target_dir;
 
+    // private void Start() {
+    //     target_player = GameObject.FindGameObjectWithTag("Player");
+
+    // }
+    private void Start() {
+        canon_bullet_speed = Gun_Container.canon.GetSpeed();
+        DelayPerShot = Gun_Container.canon.GetFireRate();
+    }
     private void Update()
     {
 
@@ -49,6 +60,7 @@ public class enemy_canon : MonoBehaviour
     {
         timestamp = DelayPerShot + Time.time;
         GameObject canon_bullet = Instantiate(canon_bullet_prefab, (Vector2)shootpoint.position, Quaternion.identity);
+        canon_bullet.GetComponent<canon_bullet>().damage = Gun_Container.canon.GetDamage();
         Vector2 canon_bullet_direction = target_dir;
         canon_bullet_direction.Normalize();
         canon_bullet.GetComponent<Rigidbody2D>().velocity = canon_bullet_direction * canon_bullet_speed;
@@ -56,5 +68,15 @@ public class enemy_canon : MonoBehaviour
     // for the canon to fire bullets
 
 
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        if(other.gameObject.tag == "player bullet"){
+            health-=other.gameObject.GetComponent<bullet>().damage;
+            Debug.Log("canon's health "+health);
+            if(health<=0){
+                Destroy(gameObject);
+            }
+        }
+    }
 
 }

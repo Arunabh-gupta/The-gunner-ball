@@ -107,7 +107,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  m_Color: {r: 0.61066216, g: 0.82825047, b: 0.8584906, a: 1}
+  m_Color: {r: 0.95895636, g: 0.9716981, b: 0.3428444, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -166,6 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63f23456426e50245ae65d0cfb68b871, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 10
   target_player: {fileID: 0}
   shootpoint: {fileID: 8676618628947075556}
   looking_Radius: 5
