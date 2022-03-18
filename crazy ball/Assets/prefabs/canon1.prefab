@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8676618628947075556}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: shootpoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 8676618629534720031}
   - component: {fileID: 8676618629534720483}
   - component: {fileID: 8676618629534720482}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: canon1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -171,7 +171,7 @@ MonoBehaviour:
   looking_Radius: 5
   canon_bullet_prefab: {fileID: 8946333522681443906, guid: 627f2ebfc7457454199948977d37d167, type: 3}
   canon_bullet_speed: 10
-  canon_rotation_speed: 25
+  canon_rotation_speed: 500
 --- !u!233 &8676618629534720482
 HingeJoint2D:
   m_ObjectHideFlags: 0
@@ -207,7 +207,7 @@ GameObject:
   - component: {fileID: 8676618629765102006}
   - component: {fileID: 8676618629765102004}
   - component: {fileID: 8676618629765102005}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ' canon tunnel'
   m_TagString: Untagged
   m_Icon: {fileID: 0}

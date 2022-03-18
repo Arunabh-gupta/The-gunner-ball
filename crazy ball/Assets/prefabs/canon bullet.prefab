@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3499716224800327589}
   - component: {fileID: 3181966330776675180}
   - component: {fileID: 8692319269753789237}
-  - component: {fileID: 4479761943159749241}
+  - component: {fileID: 1189991592708482605}
   m_Layer: 0
   m_Name: canon bullet
   m_TagString: Untagged
@@ -230,7 +230,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &4479761943159749241
+--- !u!114 &1189991592708482605
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -239,6 +239,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 8946333522681443906}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a26a2e74a6d3a2641bdc1f2813791128, type: 3}
+  m_Script: {fileID: 11500000, guid: a652584a162b6dd42b95699153cd866c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
