@@ -9,3 +9,4 @@ public class healths
     public static float playerHealth = 100f;
     
 }
+// A healths container class to store all the default healths at one place

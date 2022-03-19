@@ -5,9 +5,11 @@ using UnityEngine;
 public class enemy_canon : MonoBehaviour
 {
 
-    [SerializeField]
-    private float health = healths.canonHealth;
-    [SerializeField]
+    // for adding health bar
+    [SerializeField] private float MaxHealth;
+    [SerializeField] private float currentHealth;
+    [SerializeField] private health_bar canonBar;
+    // for adding health bar
     private GameObject target_player;
     [SerializeField]
     private Transform shootpoint;
@@ -25,13 +27,21 @@ public class enemy_canon : MonoBehaviour
     //for time delay between each shot of bullet
     Vector2 target_dir;
 
-    // private void Start() {
-    //     target_player = GameObject.FindGameObjectWithTag("Player");
 
-    // }
-    private void Start() {
+    private void Start()
+    {
+        // for adding health bar
+        currentHealth = healths.canonHealth;
+        MaxHealth = healths.canonHealth;
+        canonBar.SetMaxHealth(MaxHealth);
+        // for adding health bar
+
+        target_player = GameObject.FindGameObjectWithTag("Player");// At the start of the game it would assign Player gameobject directly to the target_player so that i don't have to that manually
+
+        // using gun_container class to assign the gun features
         canon_bullet_speed = Gun_Container.canon.GetSpeed();
         DelayPerShot = Gun_Container.canon.GetFireRate();
+        // using gun_container class to assign the gun features
     }
     private void Update()
     {
@@ -40,9 +50,9 @@ public class enemy_canon : MonoBehaviour
         if (target_dir.magnitude <= looking_Radius && Time.time > timestamp)
         {
             fire_cannon();
-            
+
         }
-            
+
         lookAt();
 
     }
@@ -68,15 +78,20 @@ public class enemy_canon : MonoBehaviour
     // for the canon to fire bullets
 
 
-
-    private void OnCollisionEnter2D(Collision2D other) {
-        if(other.gameObject.tag == "player bullet"){
-            health-=other.gameObject.GetComponent<bullet>().damage;
-            Debug.Log("canon's health "+health);
-            if(health<=0){
+    // health damage for the canon
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "player bullet")
+        {
+            currentHealth -= other.gameObject.GetComponent<bullet>().damage;
+            
+            canonBar.setHealth(currentHealth); //updating the fill of the health bar
+            if (currentHealth <= 0)
+            {
                 Destroy(gameObject);
             }
         }
     }
+    // health damage for the canon
 
 }

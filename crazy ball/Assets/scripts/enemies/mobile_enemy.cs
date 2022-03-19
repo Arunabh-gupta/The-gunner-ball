@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class mobile_enemy : MonoBehaviour
 {
-    [SerializeField]
-    private float health = healths.enemyHealth;
+    // for adding health bar
+    [SerializeField] private float MaxHealth;
+    [SerializeField] private float currentHealth;
+    [SerializeField] private health_bar enemyBar;
+    // for adding health bar
     [SerializeField]
     private GameObject target_player;
     [SerializeField]
@@ -27,10 +30,18 @@ public class mobile_enemy : MonoBehaviour
     Vector2 target_dir;
 
     private void Start()
-    {   // Using Gun_container class to give the values of respective variables
+    {
+        target_player = GameObject.FindGameObjectWithTag("Player");
+        // Using Gun_container class to give the values of respective variables
         enemy_bullet_speed = Gun_Container.enemyGun.GetSpeed();
         DelayPerShot = Gun_Container.enemyGun.GetFireRate();
-       // Using Gun_container class to give the values of respective variables
+        // Using Gun_container class to give the values of respective variables
+
+        // for adding health bar
+        currentHealth = healths.enemyHealth;
+        MaxHealth = healths.enemyHealth;
+        enemyBar.SetMaxHealth(MaxHealth);
+        // for adding health bar
     }
     private void Update()
     {
@@ -70,16 +81,19 @@ public class mobile_enemy : MonoBehaviour
     }
     // enemy bullet firing
 
+    // enemy damage taking block
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag == "player bullet")
         {
-            health -= other.gameObject.GetComponent<bullet>().damage;
-            Debug.Log("Mobile enemy's health " + health);
-            if (health <= 0)
+            currentHealth -= other.gameObject.GetComponent<bullet>().damage;
+            
+            enemyBar.setHealth(currentHealth); //updating the fill of the health bar
+            if (currentHealth <= 0)
             {
                 Destroy(gameObject);
             }
         }
     }
+    // enemy damage taking block
 }
