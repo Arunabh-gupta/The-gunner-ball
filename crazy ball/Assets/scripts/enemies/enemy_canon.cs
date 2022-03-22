@@ -14,7 +14,7 @@ public class enemy_canon : MonoBehaviour
     [SerializeField]
     private Transform shootpoint;
     [SerializeField]
-    private float looking_Radius = 3f;
+    private float looking_Radius = 10f;
     [SerializeField]
     private GameObject canon_bullet_prefab;
     [SerializeField]
@@ -46,7 +46,9 @@ public class enemy_canon : MonoBehaviour
     private void Update()
     {
 
+
         target_dir = target_player.transform.position - transform.position;
+
         if (target_dir.magnitude <= looking_Radius && Time.time > timestamp)
         {
             fire_cannon();
@@ -84,7 +86,7 @@ public class enemy_canon : MonoBehaviour
         if (other.gameObject.tag == "player bullet")
         {
             currentHealth -= other.gameObject.GetComponent<bullet>().damage;
-            
+
             canonBar.setHealth(currentHealth); //updating the fill of the health bar
             if (currentHealth <= 0)
             {

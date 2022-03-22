@@ -16,17 +16,17 @@ public class bullet : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
-        // if (other.collider.tag == "obstacle")
-        // {
-        //     Destroy(gameObject);
-        //     // Debug.Log(other);
-        // }
+        
         StartCoroutine(cam.GetComponent<Camera_Shake>().Shake(magnitude));
-
+        Destroy(gameObject);
+    }
+    private void OnTriggerEnter2D(Collider2D other) {
+        StartCoroutine(cam.GetComponent<Camera_Shake>().Shake(magnitude));
+        Destroy(gameObject);
     }
 
     private void Update()
     {
-        Destroy(gameObject, 3f);
+        Destroy(gameObject, 1.5f);
     }
 }

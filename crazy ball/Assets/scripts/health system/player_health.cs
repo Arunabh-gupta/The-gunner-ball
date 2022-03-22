@@ -33,6 +33,16 @@ public class player_health : MonoBehaviour
                Destroy(gameObject);
            }
        }
+       if(other.gameObject.tag == "projectile"){
+            playerBar.setHealth(currentHealth);//updating the fill of the health bar
+           currentHealth-=other.gameObject.GetComponent<projectile>().projectileDamage;
+           if(currentHealth<=0){
+               Destroy(gameObject);
+           }
+       }
+
+       
+       
    }
    // player damage block
 
