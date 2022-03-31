@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class enemy_canon : MonoBehaviour
 {
 
@@ -10,6 +10,12 @@ public class enemy_canon : MonoBehaviour
     [SerializeField] private float currentHealth;
     [SerializeField] private health_bar canonBar;
     // for adding health bar
+
+    // for popping text animation
+    [SerializeField] GameObject damage_indicator;
+    
+    
+    // for popping text animation
     private GameObject target_player;
     [SerializeField]
     private Transform shootpoint;
@@ -27,7 +33,11 @@ public class enemy_canon : MonoBehaviour
     //for time delay between each shot of bullet
     Vector2 target_dir;
 
+    // death particle effects
+    [Header("death particle effect")]
+    [SerializeField] private ParticleSystem death_effect;
 
+    // death particle effects
     private void Start()
     {
         // for adding health bar
@@ -42,6 +52,10 @@ public class enemy_canon : MonoBehaviour
         canon_bullet_speed = Gun_Container.canon.GetSpeed();
         DelayPerShot = Gun_Container.canon.GetFireRate();
         // using gun_container class to assign the gun features
+
+        // for popping text animation
+        
+        // for popping text animation        
     }
     private void Update()
     {
@@ -81,15 +95,19 @@ public class enemy_canon : MonoBehaviour
 
 
     // health damage for the canon
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "player bullet")
         {
             currentHealth -= other.gameObject.GetComponent<bullet>().damage;
-
-            canonBar.setHealth(currentHealth); //updating the fill of the health bar
+            
+            // canonBar.setHealth(currentHealth); //updating the fill of the health bar
+            // POPUPtextGenerator.POPuptext(other.gameObject.GetComponent<bullet>().damage.ToString(), gameObject, damage_indicator);
+            
+            Debug.Log(death_effect.transform.position);
             if (currentHealth <= 0)
             {
+                // death_effect.Play();
                 Destroy(gameObject);
             }
         }

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class healths 
 {
-    public static float canonHealth = 10f;
-    public static float enemyHealth = 5f;
+    public static float canonHealth = 20f;
+    public static float enemyHealth = 10f;
     public static float playerHealth = 100f;
     public static float Boss1Health = 100f;
     public static float Boss2Health = 120f;

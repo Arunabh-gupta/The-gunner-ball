@@ -20,6 +20,11 @@ public class Boss1 : MonoBehaviour
     private float Currenthealth = healths.Boss1Health;
     private float Maxhealth = healths.Boss1Health;
     // health system of the boss
+
+    [Header("death particle effect")]
+    // death particle effect
+    [SerializeField] private ParticleSystem death_effect;
+    // death particle effect
     private void Start()
     {
         bullet_speed = Gun_Container.Boss1Gun.GetSpeed();
@@ -71,7 +76,9 @@ public class Boss1 : MonoBehaviour
             Currenthealth -= other.gameObject.GetComponent<bullet>().damage;
             if (Currenthealth <= 0)
             {
+
                 Destroy(gameObject);
+                death_effect.Play();
             }
         }
     }

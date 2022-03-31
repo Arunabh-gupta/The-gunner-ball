@@ -253,6 +253,7 @@ MonoBehaviour:
   MaxHealth: 0
   currentHealth: 0
   canonBar: {fileID: 6609888818691610396}
+  damage_indicator: {fileID: 8454023917481812212, guid: 17ee5ef3275d8c9448961a1501855260, type: 3}
   shootpoint: {fileID: 8676618628947075556}
   looking_Radius: 6
   canon_bullet_prefab: {fileID: 8946333522681443906, guid: 627f2ebfc7457454199948977d37d167, type: 3}
