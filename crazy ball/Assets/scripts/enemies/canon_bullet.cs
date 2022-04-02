@@ -7,12 +7,12 @@ public class canon_bullet : MonoBehaviour
     
     public float damage;
     private void OnCollisionEnter2D(Collision2D other) {
-        if(other.collider.tag == "obstacle"){
-            Destroy(gameObject);
-            
-        }
-       
-            
+        if(other.collider.tag == "Player"){
+            // bullet destruction effect
+            ParticleSystem effect = Instantiate(GameObject.Find("particleManager").GetComponent<particleSystemManager>().canon_and_enemy_bullet_hit, transform.position, Quaternion.identity);
+            effect.Play();
+            Destroy(gameObject);   
+        }       
     }
 
     private void Update() {

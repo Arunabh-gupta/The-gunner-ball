@@ -44,6 +44,10 @@ public class gun_firing : MonoBehaviour
         {
             timestamp = Time.time + perShotDelay;
             GameObject bullet = Instantiate(bullet_prefab, Nozzle.position, Quaternion.identity);
+            // smoke effect particle effect
+            ParticleSystem smoke_effect = Instantiate(GameObject.Find("particleManager").GetComponent<particleSystemManager>().bullet_smoke, Nozzle.position, Quaternion.identity);
+            smoke_effect.Play();
+            // smoke effect particle effect
             float speed = gun.GetSpeed();
             Vector2 pdir = Vector2.Perpendicular(dir) * Random.Range(-gun.GetSpread(), gun.GetSpread());
             bullet.GetComponent<Rigidbody2D>().AddForce((dir + pdir) * gun.GetSpeed(), ForceMode2D.Impulse);

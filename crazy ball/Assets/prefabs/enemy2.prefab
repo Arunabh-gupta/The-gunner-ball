@@ -251,6 +251,7 @@ MonoBehaviour:
   enemy_bullet_speed: 10
   enemy_rotation_speed: 250
   enemy_movement_speed: 2
+  death_effect: {fileID: 8786541602775461467, guid: 0ecb49f2bd16b6940b83b1793c3b7c5f, type: 3}
 --- !u!50 &2560326696613396402
 Rigidbody2D:
   serializedVersion: 4

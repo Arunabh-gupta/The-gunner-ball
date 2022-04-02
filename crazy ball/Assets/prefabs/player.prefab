@@ -493,6 +493,7 @@ MonoBehaviour:
   MaxHealth: 0
   currentHealth: 0
   playerBar: {fileID: 1435751815278012865}
+  death_effect: {fileID: 916524917160841685, guid: 571a4f1f642363c439964e3093644d0d, type: 3}
 --- !u!1001 &3542350413666094654
 PrefabInstance:
   m_ObjectHideFlags: 0

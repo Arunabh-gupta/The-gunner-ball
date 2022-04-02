@@ -6,6 +6,8 @@ public class camera_follow : MonoBehaviour
 {
     [SerializeField]
     private GameObject player;
+
+    private Vector3 camPos;
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -13,8 +15,14 @@ public class camera_follow : MonoBehaviour
 
     private void Update()
     {
+        if(player == null){
+            transform.position = camPos;
+        }
+        else{
+            transform.position = player.transform.position + new Vector3(0, 0, -10);
+            camPos = transform.position; // giving camPos the last known position of the camera
+        }
 
-        transform.position = player.transform.position + new Vector3(0, 0, -10);
     }
 
 

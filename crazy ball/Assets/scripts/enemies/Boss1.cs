@@ -21,10 +21,7 @@ public class Boss1 : MonoBehaviour
     private float Maxhealth = healths.Boss1Health;
     // health system of the boss
 
-    [Header("death particle effect")]
-    // death particle effect
-    [SerializeField] private ParticleSystem death_effect;
-    // death particle effect
+    
     private void Start()
     {
         bullet_speed = Gun_Container.Boss1Gun.GetSpeed();
@@ -52,6 +49,9 @@ public class Boss1 : MonoBehaviour
             Vector2 dir = (Vector2)shootpoint.position - (Vector2)gunOnBoss.transform.position;
             dir.Normalize();
             GameObject bullet = Instantiate(bullet_prefab, shootpoint.position, Quaternion.identity);
+            ParticleSystem smoke_effect = Instantiate(GameObject.Find("particleManager").GetComponent<particleSystemManager>().bullet_smoke, shootpoint.position, Quaternion.identity);
+            smoke_effect.Play();
+            bullet.GetComponent<bullet>().damage = Gun_Container.Boss1Gun.GetDamage();
             bullet.GetComponent<Rigidbody2D>().velocity = dir * bullet_speed;
         }
     }
@@ -77,8 +77,9 @@ public class Boss1 : MonoBehaviour
             if (Currenthealth <= 0)
             {
 
+                ParticleSystem effect = Instantiate(GameObject.Find("particleManager").GetComponent<particleSystemManager>().boss1_destruction, transform.position, Quaternion.identity);
+                effect.Play();
                 Destroy(gameObject);
-                death_effect.Play();
             }
         }
     }

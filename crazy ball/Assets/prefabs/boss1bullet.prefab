@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7333493444651271414}
   m_Layer: 0
   m_Name: boss1bullet
-  m_TagString: player bullet
+  m_TagString: boss1bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -210,7 +210,7 @@ TrailRenderer:
       ctime5: 0
       ctime6: 0
       ctime7: 0
-      atime0: 0
+      atime0: 50115
       atime1: 65535
       atime2: 0
       atime3: 0

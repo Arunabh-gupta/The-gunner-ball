@@ -18,6 +18,7 @@ public class Boss2 : MonoBehaviour
     [SerializeField] private float Maxhealth = healths.Boss2Health;
     //health system of the boss
 
+    
     private void Start()
     {
         DelayPerShot = Gun_Container.Boss2Projectile.GetFireRate();
@@ -51,17 +52,6 @@ public class Boss2 : MonoBehaviour
     // firing system of Boss2
 
     // boss2 damage system
-    // private void OnCollisionEnter2D(Collision2D other)
-    // {
-    //     if (other.gameObject.tag == "player bullet")
-    //     {
-    //         Currenthealth -= other.gameObject.GetComponent<bullet>().damage;
-    //         if (Currenthealth <= 0)
-    //         {
-    //             Destroy(gameObject);
-    //         }
-    //     }
-    // }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "player bullet")
@@ -69,6 +59,8 @@ public class Boss2 : MonoBehaviour
             Currenthealth -= other.gameObject.GetComponent<bullet>().damage;
             if (Currenthealth <= 0)
             {
+                ParticleSystem effect = Instantiate(GameObject.Find("particleManager").GetComponent<particleSystemManager>().boss2_destruction, transform.position, Quaternion.identity);
+                effect.Play();
                 Destroy(gameObject);
             }
         }
