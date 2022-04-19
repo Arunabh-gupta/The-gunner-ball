@@ -10,6 +10,9 @@ public class Movement_2D : MonoBehaviour
     float vertical;
     float moveLimiter = 0.7f;
 
+    float timestamp = 0f;
+    float speedUp_duration = 5f;
+    bool speedUp_active;
     public float runSpeed;
 
     void Start()
@@ -36,22 +39,28 @@ public class Movement_2D : MonoBehaviour
         }
 
         body.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
-        // Invoke("Return_normal_speed", 5f);
+        
+        // checking if speedUp powerup is active or not otherwise the original speed will be reduced after every timestamp
+        if(speedUp_active==true){
+            if(Time.time >= timestamp){
+                Return_normal_speed();
+            }
+        }    
     }
 
-    // private void OnTriggerEnter2D(Collider2D other) {
-    //     Debug.Log(other.tag);
-    //     if(other.tag == "speed up"){
-    //         Destroy(other.gameObject);
-    //     }
-    //         Debug.Log(runSpeed);
-    //         runSpeed*=2;
-        
-
-    // }
-
-    // void Return_normal_speed(){
-    //     runSpeed/=2;
-    // }
+    // everything on speedup powerup
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.gameObject.tag == "Speed Up"){
+            speedUp_active = true;
+            Destroy(other.gameObject);
+            runSpeed*=2f;
+            timestamp = Time.time + speedUp_duration;
+        }
+    }
+    void Return_normal_speed(){
+        runSpeed/=2f;
+        speedUp_active=false;
+    }
+    // everything on speedup powerup
     
 }
