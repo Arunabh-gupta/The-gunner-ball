@@ -52,6 +52,7 @@ public class Movement_2D : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.tag == "Speed Up"){
             speedUp_active = true;
+            // LeanTween.scale(other.gameObject, new Vector3(0.1f, 0.1f, 0), 1f).setEaseOutElastic();
             Destroy(other.gameObject);
             runSpeed*=2f;
             timestamp = Time.time + speedUp_duration;

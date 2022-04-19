@@ -17,6 +17,10 @@ public class gun_firing : MonoBehaviour
     private float perShotDelay; // fireRate argument of gun object will given to this
     //for adding a delay between firing of bullets
 
+
+    private float gunChange_timestamp=0f;
+    private float gunChange_timeperiod = 5f;
+    private bool gunChange_active;
     private void Start()
     {
 
@@ -30,6 +34,12 @@ public class gun_firing : MonoBehaviour
         if (Input.GetMouseButton(0) && Time.time > timestamp)
         {
             Fire(gun);
+        }
+
+        if(gunChange_active == true){
+            if(Time.time>=gunChange_timestamp){
+                gun = gun_list[0];
+            }
         }
     }
 
@@ -59,4 +69,19 @@ public class gun_firing : MonoBehaviour
         }
     }
     // firing of bullets function
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.gameObject.tag == "Shotgun"){
+            gunChange_timestamp = Time.time + gunChange_timeperiod;
+            gunChange_active = true;
+            gun = gun_list[2];
+            Destroy(other.gameObject);
+        }
+        if(other.gameObject.tag == "MachineGun"){
+            gunChange_timestamp = Time.time + gunChange_timeperiod;
+            gunChange_active = true;
+            gun = gun_list[1];
+            Destroy(other.gameObject);
+        }
+    }
 }
