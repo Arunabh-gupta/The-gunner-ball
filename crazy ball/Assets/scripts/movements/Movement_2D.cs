@@ -10,7 +10,7 @@ public class Movement_2D : MonoBehaviour
     float vertical;
     float moveLimiter = 0.7f;
 
-    public float runSpeed = 20.0f;
+    public float runSpeed;
 
     void Start()
     {
@@ -36,5 +36,22 @@ public class Movement_2D : MonoBehaviour
         }
 
         body.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
+        // Invoke("Return_normal_speed", 5f);
     }
+
+    // private void OnTriggerEnter2D(Collider2D other) {
+    //     Debug.Log(other.tag);
+    //     if(other.tag == "speed up"){
+    //         Destroy(other.gameObject);
+    //     }
+    //         Debug.Log(runSpeed);
+    //         runSpeed*=2;
+        
+
+    // }
+
+    // void Return_normal_speed(){
+    //     runSpeed/=2;
+    // }
+    
 }

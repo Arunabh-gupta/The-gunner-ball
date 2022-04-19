@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class gun_firing : MonoBehaviour
 {
-    public float recoil;
+    public float recoil_force;
     private Gun gun; // the gun object with its features 
     Gun[] gun_list = { Gun_Container.Pistol, Gun_Container.Shotgun, Gun_Container.revolver }; // list of all the guns
     private bool readyTofire = true; // don't what's this is for😪😪. Might use in future 
@@ -44,14 +44,18 @@ public class gun_firing : MonoBehaviour
         {
             timestamp = Time.time + perShotDelay;
             GameObject bullet = Instantiate(bullet_prefab, Nozzle.position, Quaternion.identity);
+
             // smoke effect particle effect
             ParticleSystem smoke_effect = Instantiate(GameObject.Find("particleManager").GetComponent<particleSystemManager>().bullet_smoke, Nozzle.position, Quaternion.identity);
             smoke_effect.Play();
             // smoke effect particle effect
+
             float speed = gun.GetSpeed();
             Vector2 pdir = Vector2.Perpendicular(dir) * Random.Range(-gun.GetSpread(), gun.GetSpread());
             bullet.GetComponent<Rigidbody2D>().AddForce((dir + pdir) * gun.GetSpeed(), ForceMode2D.Impulse);
+            
             bullet.GetComponent<bullet>().damage = gun.GetDamage();
+            
         }
     }
     // firing of bullets function

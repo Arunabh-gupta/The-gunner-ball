@@ -6,9 +6,9 @@ public class enemy_canon : MonoBehaviour
 {
 
     // for adding health bar
-    [SerializeField] private float MaxHealth;
+    // [SerializeField] private float MaxHealth;
     [SerializeField] private float currentHealth;
-    [SerializeField] private health_bar canonBar;
+    // [SerializeField] private health_bar canonBar;
     // for adding health bar
 
     // for popping text animation
@@ -38,8 +38,8 @@ public class enemy_canon : MonoBehaviour
     {
         // for adding health bar
         currentHealth = healths.canonHealth;
-        MaxHealth = healths.canonHealth;
-        canonBar.SetMaxHealth(MaxHealth);
+        // MaxHealth = healths.canonHealth;
+        // canonBar.SetMaxHealth(MaxHealth);
         // for adding health bar
 
         target_player = GameObject.FindGameObjectWithTag("Player");// At the start of the game it would assign Player gameobject directly to the target_player so that i don't have to that manually

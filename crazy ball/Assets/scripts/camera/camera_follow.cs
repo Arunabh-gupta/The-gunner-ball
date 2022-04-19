@@ -5,9 +5,9 @@ using UnityEngine;
 public class camera_follow : MonoBehaviour
 {
     [SerializeField]
-    private GameObject player;
+    public GameObject player;
 
-    private Vector3 camPos;
+    public Vector3 camPos;
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");

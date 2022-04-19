@@ -102,7 +102,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -9095717837082945937, guid: bd3cb4af8406d4436a2ae8c2aafe1f8d, type: 3}
   m_Color: {r: 1, g: 0.73415506, b: 0.25098038, a: 1}
   m_FlipX: 0
@@ -251,7 +251,6 @@ MonoBehaviour:
   enemy_bullet_speed: 10
   enemy_rotation_speed: 250
   enemy_movement_speed: 2
-  death_effect: {fileID: 8786541602775461467, guid: 0ecb49f2bd16b6940b83b1793c3b7c5f, type: 3}
 --- !u!50 &2560326696613396402
 Rigidbody2D:
   serializedVersion: 4
@@ -383,9 +382,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  m_Color: {r: 0.3823885, g: 0.3150943, b: 1, a: 1}
+  m_Color: {r: 0.31783283, g: 0.2396226, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

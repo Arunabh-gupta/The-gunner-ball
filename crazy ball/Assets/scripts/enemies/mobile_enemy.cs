@@ -5,9 +5,9 @@ using UnityEngine;
 public class mobile_enemy : MonoBehaviour
 {
     // for adding health bar
-    [SerializeField] private float MaxHealth;
+    // [SerializeField] private float MaxHealth;
     [SerializeField] private float currentHealth;
-    [SerializeField] private health_bar enemyBar;
+    // [SerializeField] private health_bar enemyBar;
     // for adding health bar
     [SerializeField]
     private GameObject target_player;
@@ -39,8 +39,8 @@ public class mobile_enemy : MonoBehaviour
 
         // for adding health bar
         currentHealth = healths.enemyHealth;
-        MaxHealth = healths.enemyHealth;
-        enemyBar.SetMaxHealth(MaxHealth);
+        // MaxHealth = healths.enemyHealth;
+        // enemyBar.SetMaxHealth(MaxHealth);
         // for adding health bar
     }
     private void Update()
@@ -92,7 +92,7 @@ public class mobile_enemy : MonoBehaviour
         {
             currentHealth -= other.gameObject.GetComponent<bullet>().damage;
             
-            enemyBar.setHealth(currentHealth); //updating the fill of the health bar
+            // enemyBar.setHealth(currentHealth); //updating the fill of the health bar
             if (currentHealth <= 0)
             {
                 ParticleSystem effect = Instantiate(GameObject.Find("particleManager").GetComponent<particleSystemManager>().enemy_destruction, transform.position, Quaternion.identity);
