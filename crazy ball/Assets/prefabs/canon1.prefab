@@ -256,6 +256,8 @@ MonoBehaviour:
   canon_bullet_prefab: {fileID: 8946333522681443906, guid: 627f2ebfc7457454199948977d37d167, type: 3}
   canon_bullet_speed: 10
   canon_rotation_speed: 500
+  enemy_rotation_speed: 250
+  enemy_movement_speed: 3
 --- !u!233 &8676618629534720482
 HingeJoint2D:
   m_ObjectHideFlags: 0

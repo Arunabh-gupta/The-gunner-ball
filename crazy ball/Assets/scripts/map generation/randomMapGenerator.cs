@@ -52,6 +52,7 @@ public class randomMapGenerator : MonoBehaviour
             Collider2D[] close_ones = Physics2D.OverlapCircleAll((Vector2)coordinate, radius);
             if (close_ones.Length == 0)
             {
+                
                 Instantiate(obstacle, coordinate, obstacle.transform.rotation);
             }
             else

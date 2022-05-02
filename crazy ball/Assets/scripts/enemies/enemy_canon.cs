@@ -32,7 +32,10 @@ public class enemy_canon : MonoBehaviour
     private float DelayPerShot;
     //for time delay between each shot of bullet
     Vector2 target_dir;
-
+    [SerializeField]
+    private float enemy_rotation_speed = 250f;
+    [SerializeField]
+    private float enemy_movement_speed = 20f;
 
     private void Start()
     {
@@ -65,7 +68,7 @@ public class enemy_canon : MonoBehaviour
 
         }
 
-        lookAt();
+        lookAtandMoveTowards(target_dir);
 
     }
 
@@ -93,6 +96,16 @@ public class enemy_canon : MonoBehaviour
     }
     // for the canon to fire bullets
 
+    // to look at the player gameObject ans move towards it
+    private void lookAtandMoveTowards(Vector2 target_dir)
+    {
+        float target_angle = Mathf.Atan2(target_dir.y, target_dir.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, target_angle), enemy_rotation_speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, target_player.transform.position, enemy_movement_speed * Time.deltaTime);
+        // Debug.Log(transform.position);
+
+    }
+    // to look at the player gameObject ans move towards it
 
     // health damage for the canon
     private void OnTriggerEnter2D(Collider2D other)

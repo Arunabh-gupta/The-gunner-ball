@@ -21,6 +21,9 @@ public class Boss1 : MonoBehaviour
     private float Maxhealth = healths.Boss1Health;
     // health system of the boss
 
+    // random motion of the boss
+    [SerializeField] float random_movespeed = 5f;
+    // random motion of the boss
     
     private void Start()
     {
@@ -29,14 +32,20 @@ public class Boss1 : MonoBehaviour
         Boss1Rb = GetComponent<Rigidbody2D>();
 
         Boss1Rb.angularVelocity = revolvingSpeed;
+        // random motion of the boss
+        // move_random();
 
     }
-    private void Update()
+    
+    private void FixedUpdate()
     {
         if (Time.time > timestamp)
         {
             BossGunFiring();
         }
+        
+        // LeanTween.rotateAround(gameObject, Vector3.up, 100, 1);
+       
     }
     // firing system of the guns in boss 1. Very similar to the every gun in the game
     void BossGunFiring()
@@ -58,17 +67,20 @@ public class Boss1 : MonoBehaviour
     // firing system of the guns in boss 1. Very similar to the every gun in the game
 
     // Boss damage
-    // private void OnCollisionEnter2D(Collision2D other)
-    // {
-    //     if (other.gameObject.tag == "player bullet")
-    //     {
-    //         Currenthealth -= other.gameObject.GetComponent<bullet>().damage;
-    //         if (Currenthealth <= 0)
-    //         {
-    //             Destroy(gameObject);
-    //         }
-    //     }
-    // }
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        // if (other.gameObject.tag == "player bullet")
+        // {
+        //     Currenthealth -= other.gameObject.GetComponent<bullet>().damage;
+        //     if (Currenthealth <= 0)
+        //     {
+        //         Destroy(gameObject);
+        //     }
+        // }
+        // if (other.gameObject.tag == "boundry"){
+        //     move_random();
+        // }
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "player bullet")
@@ -82,6 +94,16 @@ public class Boss1 : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+        
     }
     // Boss damage
+
+    private void move_random(){
+        float x,y;
+        x = Random.Range(-2,2);
+        y = Random.Range(-2,2);
+        Vector2 random_dir = new Vector2(x,y);
+
+        Boss1Rb.velocity = random_dir * random_movespeed;
+    }
 }
