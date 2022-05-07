@@ -34,10 +34,11 @@ public class shield : MonoBehaviour
         // time period block
         if(currentTime>=5f){
             // shield closing animation
-            LeanTween.scale(gameObject, new Vector3(0.4f,0.4f,0), 1f).setEaseOutExpo();
-            LeanTween.alpha(gameObject, 0,1f);
+            
+            LeanTween.scale(gameObject, new Vector3(0.35f,0.35f,0), 1.5f).setEaseOutExpo();
+            
             // shield closing animation
-            Destroy(gameObject,1f);
+            Destroy(gameObject,0.2f);
         }
         // time period block
     }

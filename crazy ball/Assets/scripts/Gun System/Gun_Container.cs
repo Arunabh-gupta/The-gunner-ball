@@ -14,4 +14,7 @@ public class Gun_Container
 
     public static Gun Boss1Gun = new Gun(0.2f, 1, 0f, 5f, 2, "Boss1Gun");
     public static Gun Boss2Projectile = new Gun(1f, 1, 0, 10f, 10, "Boss2Projectile");
+
+    public static Gun missile1 = new Gun(0f,0f, 0f,0f,10,"Missile1");
+    public static Gun missile2 = new Gun(0f,0f, 0f,0f,15,"Missile2");
 }

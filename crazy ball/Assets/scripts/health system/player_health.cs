@@ -69,13 +69,37 @@ public class player_health : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+        if (other.gameObject.tag == "missile1" || other.gameObject.tag == "missile2")
+        {
+            if (other.gameObject.tag == "missile1")
+            {
+                currentHealth -= other.gameObject.GetComponent<homing_missile>().damage1;
+                if (currentHealth <= 0)
+                {
+                    ParticleSystem effect = Instantiate(GameObject.Find("particleManager").GetComponent<particleSystemManager>().player_destruction, transform.position, Quaternion.identity);
+                    effect.Play();
+                    Destroy(gameObject);
+                }
+            }
+            if (other.gameObject.tag == "missile2")
+            {
+                currentHealth -= other.gameObject.GetComponent<homing_missile>().damage2;
+                if (currentHealth <= 0)
+                {
+                    ParticleSystem effect = Instantiate(GameObject.Find("particleManager").GetComponent<particleSystemManager>().player_destruction, transform.position, Quaternion.identity);
+                    effect.Play();
+                    Destroy(gameObject);
+                }
+            }
+        }
     }
 
 
     // player damage block
 
     // health up power up implementation
-    private void OnTriggerEnter2D(Collider2D other) {
+    private void OnTriggerEnter2D(Collider2D other)
+    {
         if (other.gameObject.tag == "health up pill")
         {
             Debug.Log(currentHealth);
@@ -89,6 +113,8 @@ public class player_health : MonoBehaviour
                 currentHealth += 20;
             }
             Debug.Log(currentHealth);
+            ParticleSystem effect = Instantiate(GameObject.Find("particleManager").GetComponent<particleSystemManager>().health_up_effect, other.transform.position, Quaternion.identity);
+            effect.Play();
             Destroy(other.gameObject);
         }
     }

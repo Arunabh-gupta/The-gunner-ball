@@ -9,6 +9,6 @@ public class health_up : MonoBehaviour
     private void Start()
     {
         health_up_rb = gameObject.GetComponent<Rigidbody2D>();
-        health_up_rb.angularVelocity = rotation_magnitude;
+        
     }
 }

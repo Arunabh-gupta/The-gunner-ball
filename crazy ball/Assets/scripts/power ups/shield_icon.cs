@@ -15,6 +15,8 @@ public class shield_icon : MonoBehaviour
             LeanTween.scale(force_sheild, new Vector3(1.2f, 1.2f, 0f), 1f).setEaseOutElastic(); // elastic popping shield animation
             LeanTween.rotateAround(force_sheild,Vector3.forward,-3600, 10f).setLoopClamp(); // rotation animation
 
+            ParticleSystem effect = Instantiate(GameObject.Find("particleManager").GetComponent<particleSystemManager>().shield_icon_effect, transform.position, Quaternion.identity);
+            effect.Play();
             Destroy(gameObject);
         }
     }

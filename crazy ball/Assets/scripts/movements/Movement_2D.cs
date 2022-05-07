@@ -50,10 +50,12 @@ public class Movement_2D : MonoBehaviour
 
     // everything on speedup powerup
     private void OnTriggerEnter2D(Collider2D other) {
-        if(other.gameObject.tag == "Speed Up"){
+        if(other.gameObject.tag == "Speed Up" && speedUp_active == false){
             speedUp_active = true;
-            // LeanTween.scale(other.gameObject, new Vector3(0.1f, 0.1f, 0), 1f).setEaseOutElastic();
-            Destroy(other.gameObject);
+            LeanTween.scale(other.gameObject, new Vector3(0.1f, 0.1f, 0), 1f).setEaseOutElastic();
+            ParticleSystem effect = Instantiate(GameObject.Find("particleManager").GetComponent<particleSystemManager>().speed_up_effect, other.transform.position, Quaternion.identity);
+            effect.Play();
+            Destroy(other.gameObject, 1f);
             runSpeed*=2f;
             timestamp = Time.time + speedUp_duration;
         }

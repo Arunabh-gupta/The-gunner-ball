@@ -114,11 +114,6 @@ public class enemy_canon : MonoBehaviour
         {
             currentHealth -= other.gameObject.GetComponent<bullet>().damage;
 
-            // canonBar.setHealth(currentHealth); //updating the fill of the health bar
-            // POPUPtextGenerator.POPuptext(other.gameObject.GetComponent<bullet>().damage.ToString(), gameObject, damage_indicator);
-
-            // Debug.Log(death_effect.transform.position);
-
             if (currentHealth <= 0)
             {
                 // just one line for particle system

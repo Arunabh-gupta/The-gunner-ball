@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8069452056314581487}
   m_Layer: 17
   m_Name: missle1
-  m_TagString: Untagged
+  m_TagString: missile1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 91dd489229d473d48ab583fee31ec050, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 16229aadd6fec30499d123895ec82fa3, type: 3}
   m_Color: {r: 1, g: 0.7075171, b: 0.56981134, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -124,7 +124,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.5688889, y: 0.5688889}
+    oldSize: {x: 5.12, y: 5.12}
     newSize: {x: 5.12, y: 5.12}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -166,6 +166,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5c314f264ed23b4d9243130b4ef9b55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage1: 10
+  damage2: 15
   player: {fileID: 0}
   rotate_speed: 200
   speed: 2

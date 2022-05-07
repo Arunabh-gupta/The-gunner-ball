@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class homing_missile : MonoBehaviour
 {
+    // damages of the missiles
+    [HideInInspector] public int damage1 = Gun_Container.missile1.GetDamage();
+    [HideInInspector] public int damage2 = Gun_Container.missile2.GetDamage();
     [SerializeField] private GameObject player;
     private Rigidbody2D rb_missile;
 
@@ -21,5 +24,22 @@ public class homing_missile : MonoBehaviour
 
         rb_missile.angularVelocity = -rotate_amount*rotate_speed;
         rb_missile.velocity = transform.up * speed;
+    }
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        if(other.gameObject.tag == "player bullet" || other.gameObject.tag == "Player"){
+            if(gameObject.tag == "missile1"){
+                ParticleSystem effect = Instantiate(GameObject.Find("particleManager").GetComponent<particleSystemManager>().missile1_destroy, transform.position, Quaternion.identity);
+                    effect.Play();
+                    Destroy(gameObject);
+            }
+            if(gameObject.tag == "missile2"){
+                ParticleSystem effect = Instantiate(GameObject.Find("particleManager").GetComponent<particleSystemManager>().missile2_destroy, transform.position, Quaternion.identity);
+                    effect.Play();
+                    Destroy(gameObject);
+            }
+            
+        }
+        
     }
 }

@@ -31,7 +31,7 @@ public class gun_firing : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetMouseButton(0) && Time.time > timestamp)
+        if ( Time.time > timestamp)
         {
             Fire(gun);
         }
@@ -75,12 +75,16 @@ public class gun_firing : MonoBehaviour
             gunChange_timestamp = Time.time + gunChange_timeperiod;
             gunChange_active = true;
             gun = gun_list[2];
+            ParticleSystem effect = Instantiate(GameObject.Find("particleManager").GetComponent<particleSystemManager>().shotgun_effect, other.transform.position, Quaternion.identity);
+            effect.Play();
             Destroy(other.gameObject);
         }
         if(other.gameObject.tag == "MachineGun"){
             gunChange_timestamp = Time.time + gunChange_timeperiod;
             gunChange_active = true;
             gun = gun_list[1];
+            ParticleSystem effect = Instantiate(GameObject.Find("particleManager").GetComponent<particleSystemManager>().machine_gun_effect, other.transform.position, Quaternion.identity);
+            effect.Play();
             Destroy(other.gameObject);
         }
     }
