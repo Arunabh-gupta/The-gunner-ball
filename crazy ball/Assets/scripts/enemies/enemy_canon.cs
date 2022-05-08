@@ -113,7 +113,8 @@ public class enemy_canon : MonoBehaviour
         if (other.gameObject.tag == "player bullet")
         {
             currentHealth -= other.gameObject.GetComponent<bullet>().damage;
-
+            point_system.instance.point_count+=other.gameObject.GetComponent<bullet>().damage * 10;
+            print(point_system.instance.point_count);
             if (currentHealth <= 0)
             {
                 // just one line for particle system

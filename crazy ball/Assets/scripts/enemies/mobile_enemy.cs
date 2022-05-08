@@ -91,7 +91,8 @@ public class mobile_enemy : MonoBehaviour
         if (other.gameObject.tag == "player bullet")
         {
             currentHealth -= other.gameObject.GetComponent<bullet>().damage;
-            
+            point_system.instance.point_count+=other.gameObject.GetComponent<bullet>().damage * 10;
+            print(point_system.instance.point_count);
             // enemyBar.setHealth(currentHealth); //updating the fill of the health bar
             if (currentHealth <= 0)
             {
