@@ -19,7 +19,7 @@ public class gun_firing : MonoBehaviour
 
 
     private float gunChange_timestamp=0f;
-    private float gunChange_timeperiod = 5f;
+    private float gunChange_timeperiod = 10f;
     private bool gunChange_active;
     private void Start()
     {

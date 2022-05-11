@@ -32,7 +32,7 @@ public class shield : MonoBehaviour
 
         currentTime+=Time.deltaTime;
         // time period block
-        if(currentTime>=5f){
+        if(currentTime>=10f){
             // shield closing animation
             
             LeanTween.scale(gameObject, new Vector3(0.35f,0.35f,0), 1.5f).setEaseOutExpo();

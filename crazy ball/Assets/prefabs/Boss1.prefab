@@ -889,7 +889,7 @@ GameObject:
   - component: {fileID: -5367345623149137823}
   m_Layer: 0
   m_Name: Boss1
-  m_TagString: Untagged
+  m_TagString: boss1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -983,6 +983,7 @@ MonoBehaviour:
   bullet_prefab: {fileID: 8451868331376527277, guid: 623dc9ec0fd1b11489bd6105f0b09b58, type: 3}
   DelayPerShot: 0.2
   bullet_speed: 4
+  random_movespeed: 5
 --- !u!50 &9066906643862196763
 Rigidbody2D:
   serializedVersion: 4

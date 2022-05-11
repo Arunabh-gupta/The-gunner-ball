@@ -67,20 +67,7 @@ public class Boss1 : MonoBehaviour
     // firing system of the guns in boss 1. Very similar to the every gun in the game
 
     // Boss damage
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        // if (other.gameObject.tag == "player bullet")
-        // {
-        //     Currenthealth -= other.gameObject.GetComponent<bullet>().damage;
-        //     if (Currenthealth <= 0)
-        //     {
-        //         Destroy(gameObject);
-        //     }
-        // }
-        // if (other.gameObject.tag == "boundry"){
-        //     move_random();
-        // }
-    }
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "player bullet")
@@ -93,6 +80,7 @@ public class Boss1 : MonoBehaviour
 
                 ParticleSystem effect = Instantiate(GameObject.Find("particleManager").GetComponent<particleSystemManager>().boss1_destruction, transform.position, Quaternion.identity);
                 effect.Play();
+                basic_enemy_spawner.enemy_spawn_active = true;
                 Destroy(gameObject);
             }
         }

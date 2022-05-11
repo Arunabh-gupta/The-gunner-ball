@@ -5,7 +5,7 @@ using UnityEngine;
 public class powerup_spawner : MonoBehaviour
 {
     [SerializeField] GameObject[] powerups;
-    private float xmin = -20f, xmax = 20f, ymin = -10f, ymax = 10f;
+    private float xmin = -20f, xmax = 20f, ymin = -20f, ymax = 20f;
     Vector2 coordinate;
 
     // delay between two spawns

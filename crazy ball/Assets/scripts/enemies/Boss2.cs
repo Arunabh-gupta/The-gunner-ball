@@ -63,6 +63,7 @@ public class Boss2 : MonoBehaviour
             {
                 ParticleSystem effect = Instantiate(GameObject.Find("particleManager").GetComponent<particleSystemManager>().boss2_destruction, transform.position, Quaternion.identity);
                 effect.Play();
+                basic_enemy_spawner.enemy_spawn_active = true;
                 Destroy(gameObject);
             }
         }

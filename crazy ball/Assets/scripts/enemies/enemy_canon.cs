@@ -108,13 +108,13 @@ public class enemy_canon : MonoBehaviour
     // to look at the player gameObject ans move towards it
 
     // health damage for the canon
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag == "player bullet")
         {
             currentHealth -= other.gameObject.GetComponent<bullet>().damage;
             point_system.instance.point_count+=other.gameObject.GetComponent<bullet>().damage * 10;
-            print(point_system.instance.point_count);
+            // print(point_system.instance.point_count);
             if (currentHealth <= 0)
             {
                 // just one line for particle system

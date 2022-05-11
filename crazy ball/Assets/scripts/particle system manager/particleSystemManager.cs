@@ -6,6 +6,8 @@ public class particleSystemManager : MonoBehaviour
 {
     public ParticleSystem canon_spawn_effects;
     public ParticleSystem enemy_spawn_effects;
+    public ParticleSystem boss1_spawn_effects;
+    public ParticleSystem boss2_spawn_effects;
     public ParticleSystem canon_destruction;
     public ParticleSystem enemy_destruction;
     public ParticleSystem player_destruction;
