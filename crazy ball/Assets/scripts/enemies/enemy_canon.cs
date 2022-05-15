@@ -41,9 +41,7 @@ public class enemy_canon : MonoBehaviour
     {
         // for adding health bar
         currentHealth = healths.canonHealth;
-        // MaxHealth = healths.canonHealth;
-        // canonBar.SetMaxHealth(MaxHealth);
-        // for adding health bar
+        
 
         target_player = GameObject.FindGameObjectWithTag("Player");// At the start of the game it would assign Player gameobject directly to the target_player so that i don't have to that manually
 
@@ -51,15 +49,15 @@ public class enemy_canon : MonoBehaviour
         canon_bullet_speed = Gun_Container.canon.GetSpeed();
         DelayPerShot = Gun_Container.canon.GetFireRate();
         // using gun_container class to assign the gun features
-
-        // for popping text animation
-
-        // for popping text animation        
+     
     }
     private void Update()
     {
 
-
+        // if(target_player==null){
+        //     Destroy(gameObject, 2f);
+        // }
+        if(target_player!=null){
         target_dir = target_player.transform.position - transform.position;
 
         if (target_dir.magnitude <= looking_Radius && Time.time > timestamp)
@@ -69,7 +67,7 @@ public class enemy_canon : MonoBehaviour
         }
 
         lookAtandMoveTowards(target_dir);
-
+        }
     }
 
     // for the canon to look at the player 
@@ -114,8 +112,7 @@ public class enemy_canon : MonoBehaviour
         {
             currentHealth -= other.gameObject.GetComponent<bullet>().damage;
             point_system.instance.point_count+=other.gameObject.GetComponent<bullet>().damage * 10;
-            // print(point_system.instance.point_count);
-            // print("canon 2 health checker: "+currentHealth);
+            
             if (currentHealth <= 0)
             {
                 // just one line for particle system

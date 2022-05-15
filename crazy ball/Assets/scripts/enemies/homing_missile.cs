@@ -17,6 +17,7 @@ public class homing_missile : MonoBehaviour
         rb_missile = GetComponent<Rigidbody2D>();
     }
     private void FixedUpdate() {
+        if(player!=null){
         Vector3 direction = player.transform.position - transform.position;
         Vector3 current_dir = transform.up;
         direction.Normalize();
@@ -24,6 +25,7 @@ public class homing_missile : MonoBehaviour
 
         rb_missile.angularVelocity = -rotate_amount*rotate_speed;
         rb_missile.velocity = transform.up * speed;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other) {

@@ -5,16 +5,20 @@ using UnityEngine;
 public class homing_missle_spawner : MonoBehaviour
 {
     [SerializeField] GameObject[] missiles;
-    private float xmin = -2f, xmax = 2f, ymin = -2f, ymax = 2f;
+    private float xmin , xmax , ymin , ymax ;
 
     // delay between 2 spawns;
     private float timeStamp = 0f;
-    private float delay = 5f;
+    private float delay = 10f;
     Vector2 coordinate;
 
     private float total_missiles_to_spawn_in_gameplay = 0;
     private float total_missiles_to_spawn_at_start = 2;
     private void Start() {
+        xmin = transform.position.x-1;
+        xmax = transform.position.x+1;
+        ymin = transform.position.y-1;
+        ymax = transform.position.y+1;
         missile_spawner(total_missiles_to_spawn_at_start);    
     }
     private void Update() {

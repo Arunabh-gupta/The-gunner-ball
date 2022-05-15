@@ -29,7 +29,7 @@ public class mobile_enemy : MonoBehaviour
     //for time delay between each shot of bullet
     Vector2 target_dir;
 
-       private void Start()
+    private void Start()
     {
         target_player = GameObject.FindGameObjectWithTag("Player");
         // Using Gun_container class to give the values of respective variables
@@ -45,16 +45,17 @@ public class mobile_enemy : MonoBehaviour
     }
     private void Update()
     {
-
-        target_dir = target_player.transform.position - transform.position;
-        if (target_dir.magnitude <= looking_Radius && Time.time > timestamp)
+        if (target_player != null)
         {
-            enemy_firing();
+            target_dir = target_player.transform.position - transform.position;
+            if (target_dir.magnitude <= looking_Radius && Time.time > timestamp)
+            {
+                enemy_firing();
 
+            }
+
+            lookAtandMoveTowards(target_dir);
         }
-
-        lookAtandMoveTowards(target_dir);
-
 
     }
 
@@ -75,9 +76,9 @@ public class mobile_enemy : MonoBehaviour
         timestamp = DelayPerShot + Time.time;
         GameObject canon_bullet = Instantiate(enemy_bullet_prefab, (Vector2)shootpoint.position, Quaternion.identity);
         // smoke effect particle effect
-            ParticleSystem smoke_effect = Instantiate(GameObject.Find("particleManager").GetComponent<particleSystemManager>().bullet_smoke, shootpoint.position, Quaternion.identity);
-            smoke_effect.Play();
-            // smoke effect particle effect
+        ParticleSystem smoke_effect = Instantiate(GameObject.Find("particleManager").GetComponent<particleSystemManager>().bullet_smoke, shootpoint.position, Quaternion.identity);
+        smoke_effect.Play();
+        // smoke effect particle effect
         canon_bullet.GetComponent<canon_bullet>().damage = Gun_Container.enemyGun.GetDamage();// Giving damage to the bullet from the Gun_container class
         Vector2 enemy_bullet_direction = target_dir;
         enemy_bullet_direction.Normalize();
@@ -91,7 +92,7 @@ public class mobile_enemy : MonoBehaviour
         if (other.gameObject.tag == "player bullet")
         {
             currentHealth -= other.gameObject.GetComponent<bullet>().damage;
-            point_system.instance.point_count+=other.gameObject.GetComponent<bullet>().damage * 10;
+            point_system.instance.point_count += other.gameObject.GetComponent<bullet>().damage * 10;
             // print(point_system.instance.point_count);
             // enemyBar.setHealth(currentHealth); //updating the fill of the health bar
             if (currentHealth <= 0)

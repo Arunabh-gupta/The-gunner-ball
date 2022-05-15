@@ -14,7 +14,7 @@ public class basic_enemy_spawner : MonoBehaviour
     public static bool enemy_spawn_active = true;
     // timer
     private float timeStamp = 0.0f;
-    private float timeStamp2 = 0.0f;
+    private float timeStamp2 = 60f;
     private float delay_between_two_spawns = 10f;
     private float delay_between_two_boss_spawns = 60f;
     // timer 
@@ -56,14 +56,14 @@ public class basic_enemy_spawner : MonoBehaviour
                     ParticleSystem effect = Instantiate(GameObject.Find("particleManager").GetComponent<particleSystemManager>().enemy_spawn_effects, coordinate, Quaternion.identity);
                     effect.Play();
             }
-            if(enemy_list[rand].tag == "boss1"){
-                    ParticleSystem effect = Instantiate(GameObject.Find("particleManager").GetComponent<particleSystemManager>().boss1_spawn_effects, coordinate, Quaternion.identity);
-                    effect.Play();
-            }
-            if(enemy_list[rand].tag == "boss2"){
-                    ParticleSystem effect = Instantiate(GameObject.Find("particleManager").GetComponent<particleSystemManager>().boss2_spawn_effects, coordinate, Quaternion.identity);
-                    effect.Play();
-            }
+            // if(enemy_list[rand].tag == "boss1"){
+            //         ParticleSystem effect = Instantiate(GameObject.Find("particleManager").GetComponent<particleSystemManager>().boss1_spawn_effects, coordinate, Quaternion.identity);
+            //         effect.Play();
+            // }
+            // if(enemy_list[rand].tag == "boss2"){
+            //         ParticleSystem effect = Instantiate(GameObject.Find("particleManager").GetComponent<particleSystemManager>().boss2_spawn_effects, coordinate, Quaternion.identity);
+            //         effect.Play();
+            // }
 
             // Instantiate(enemy_list[rand], coordinate, Quaternion.identity);
             StartCoroutine(delayed_spawn(enemy_list[rand], coordinate));
