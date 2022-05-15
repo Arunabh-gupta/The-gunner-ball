@@ -6,13 +6,19 @@ public class bullet : MonoBehaviour
 {
     [HideInInspector]
     public float damage;
-    private Camera cam;
+    [SerializeField]private Camera cam;
 
     public float magnitude;
 
-    private void Start()
+    private void Awake()
     {
-        cam = FindObjectOfType<Camera>();
+        // cam = FindObjectOfType<Camera>();
+        // cam = GameObject.FindWithTag("MainCamera").Camera;
+        foreach(Camera c in Camera.allCameras){
+            if(c.name == "Main Camera"){
+                cam = c;
+            }
+        }
     }
     private void OnCollisionEnter2D(Collision2D other)
     {

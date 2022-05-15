@@ -28,7 +28,7 @@ public class basic_enemy_spawner : MonoBehaviour
 
     private void Update() {
         if(Time.time>=timeStamp && enemy_spawn_active){
-            enemy_spawner(total_enemies_to_spawn_in_gameplay);
+            enemy_spawner(total_enemies_to_spawn_in_gameplay + total_enemies_to_spawn_at_start);
         }
         if(Time.time>=timeStamp2){
             boss_spawner(1);

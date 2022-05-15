@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3595390207486611351}
   - component: {fileID: 8553188077617652521}
   - component: {fileID: 6212760678072129647}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: projectile (4)
   m_TagString: projectile
   m_Icon: {fileID: 0}
@@ -274,7 +274,7 @@ GameObject:
   - component: {fileID: 5054275668889920704}
   - component: {fileID: 1699290831898464215}
   - component: {fileID: 5423416074638328807}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: projectile
   m_TagString: projectile
   m_Icon: {fileID: 0}
@@ -534,7 +534,7 @@ GameObject:
   - component: {fileID: 7205799283455362854}
   - component: {fileID: 366364045673041809}
   - component: {fileID: 7947013347315440394}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: projectile (5)
   m_TagString: projectile
   m_Icon: {fileID: 0}
@@ -794,7 +794,7 @@ GameObject:
   - component: {fileID: 3441421338704004321}
   - component: {fileID: 9130336143551169613}
   - component: {fileID: 6876518967753569395}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: projectile (6)
   m_TagString: projectile
   m_Icon: {fileID: 0}
@@ -1054,7 +1054,7 @@ GameObject:
   - component: {fileID: 3062221228708619024}
   - component: {fileID: 7820139543489270091}
   - component: {fileID: 4141328133847787021}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: projectile (2)
   m_TagString: projectile
   m_Icon: {fileID: 0}
@@ -1314,7 +1314,7 @@ GameObject:
   - component: {fileID: 4188876881334560513}
   - component: {fileID: 4416470184127056260}
   - component: {fileID: 8752521884715974247}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: projectile (7)
   m_TagString: projectile
   m_Icon: {fileID: 0}
@@ -1574,7 +1574,7 @@ GameObject:
   - component: {fileID: 7162609090945245458}
   - component: {fileID: 1949846699997876435}
   - component: {fileID: 4250266466762475794}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: projectile (3)
   m_TagString: projectile
   m_Icon: {fileID: 0}
@@ -1834,7 +1834,7 @@ GameObject:
   - component: {fileID: 2952376887133973}
   - component: {fileID: 3827566583772667916}
   - component: {fileID: 1277591249392487668}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: projectile (1)
   m_TagString: projectile
   m_Icon: {fileID: 0}
@@ -2094,7 +2094,7 @@ GameObject:
   - component: {fileID: 3473980398505412688}
   - component: {fileID: 1782282617118968809}
   - component: {fileID: -3380476549575269109}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Boss2
   m_TagString: boss2
   m_Icon: {fileID: 0}
@@ -2243,7 +2243,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 11.957485, y: 0.19537926}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0

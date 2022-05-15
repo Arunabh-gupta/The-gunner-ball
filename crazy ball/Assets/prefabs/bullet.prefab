@@ -243,4 +243,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
+  cam: {fileID: 5202082053648845783, guid: 431179e69b356de468401423b06a0431, type: 3}
   magnitude: 60

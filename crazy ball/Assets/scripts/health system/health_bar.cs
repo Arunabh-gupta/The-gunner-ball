@@ -6,7 +6,7 @@ public class health_bar : MonoBehaviour
 {
     public Slider slider;
 
-    public Transform parent_to_follow;
+    // public Transform parent_to_follow;
     public void SetMaxHealth(float health){
         slider.maxValue = health;
         slider.value = health;

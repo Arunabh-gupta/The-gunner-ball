@@ -58,8 +58,10 @@ public class Boss2 : MonoBehaviour
         {
             Currenthealth -= other.gameObject.GetComponent<bullet>().damage;
             point_system.instance.point_count+=other.gameObject.GetComponent<bullet>().damage * 10;
-            print(point_system.instance.point_count);
+            // print(point_system.instance.point_count);
+            // print("boss 2 health: "+Currenthealth);
             if (Currenthealth <= 0)
+
             {
                 ParticleSystem effect = Instantiate(GameObject.Find("particleManager").GetComponent<particleSystemManager>().boss2_destruction, transform.position, Quaternion.identity);
                 effect.Play();
