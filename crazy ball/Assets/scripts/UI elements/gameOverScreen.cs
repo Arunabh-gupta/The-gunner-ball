@@ -11,7 +11,7 @@ public class gameOverScreen : MonoBehaviour
     private void Update() {
         if(Input.GetMouseButton(0)){
             point_system.instance.point_count = 0; // restarting the same scene with 0 points
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }

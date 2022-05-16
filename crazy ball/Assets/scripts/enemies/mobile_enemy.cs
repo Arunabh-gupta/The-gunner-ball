@@ -37,11 +37,6 @@ public class mobile_enemy : MonoBehaviour
         DelayPerShot = Gun_Container.enemyGun.GetFireRate();
         // Using Gun_container class to give the values of respective variables
 
-        // for adding health bar
-        currentHealth = healths.enemyHealth;
-        // MaxHealth = healths.enemyHealth;
-        // enemyBar.SetMaxHealth(MaxHealth);
-        // for adding health bar
     }
     private void Update()
     {
@@ -93,8 +88,7 @@ public class mobile_enemy : MonoBehaviour
         {
             currentHealth -= other.gameObject.GetComponent<bullet>().damage;
             point_system.instance.point_count += other.gameObject.GetComponent<bullet>().damage * 10;
-            // print(point_system.instance.point_count);
-            // enemyBar.setHealth(currentHealth); //updating the fill of the health bar
+            
             if (currentHealth <= 0)
             {
                 ParticleSystem effect = Instantiate(GameObject.Find("particleManager").GetComponent<particleSystemManager>().enemy_destruction, transform.position, Quaternion.identity);

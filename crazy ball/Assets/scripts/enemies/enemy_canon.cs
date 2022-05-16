@@ -4,12 +4,7 @@ using UnityEngine;
 using TMPro;
 public class enemy_canon : MonoBehaviour
 {
-
-    // for adding health bar
-    // [SerializeField] private float MaxHealth;
     [SerializeField] private float currentHealth;
-    // [SerializeField] private health_bar canonBar;
-    // for adding health bar
 
     // for popping text animation
     [SerializeField] GameObject damage_indicator;

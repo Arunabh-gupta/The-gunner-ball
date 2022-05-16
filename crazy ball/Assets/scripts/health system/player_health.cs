@@ -10,12 +10,8 @@ public class player_health : MonoBehaviour
     public health_bar playerBar;
     // for adding health bar
     float timestamp = 0.0f;
-    // float interval = 60f;
-    // float health_up_count = 1f;
+    
     bool player_alive = true;
-
-    // to display end screen canvas
-    // [SerializeField] CanvasGroup endscreen_canvas;
     [SerializeField]gameOverScreen gameoverscreen;
     private void Start()
     {
@@ -23,16 +19,14 @@ public class player_health : MonoBehaviour
         MaxHealth = healths.playerHealth;
         currentHealth = healths.playerHealth;
         playerBar.SetMaxHealth(MaxHealth);
-
-        // endscreen_canvas.GetComponent<CanvasGroup>().alpha = 0;
-        
-
     }
     private void Update() {
         if(player_alive == false){
-            print("player is dead");
-            // endscreen_canvas.GetComponent<CanvasGroup>().alpha = 1;
-            // endscreen_canvas.enabled = true;
+            float hs = PlayerPrefs.GetFloat("HighScore");
+            if(point_system.instance.point_count > hs){
+                hs = point_system.instance.point_count;
+                PlayerPrefs.SetFloat("HighScore",hs);
+            }
             gameoverscreen.setup();
         }
     }
@@ -123,8 +117,6 @@ public class player_health : MonoBehaviour
             }
         }
     }
-
-
     // player damage block
 
     // health up power up implementation
