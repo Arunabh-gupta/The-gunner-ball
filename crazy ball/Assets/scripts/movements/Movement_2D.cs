@@ -15,6 +15,8 @@ public class Movement_2D : MonoBehaviour
     bool speedUp_active;
     public float runSpeed;
 
+    // joystick
+    public Joystick joystick;
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
@@ -25,8 +27,10 @@ public class Movement_2D : MonoBehaviour
 
         // Gives a value between -1 and 1
 
-        horizontal = Input.GetAxisRaw("Horizontal"); // -1 is left
-        vertical = Input.GetAxisRaw("Vertical"); // -1 is down
+        // horizontal = Input.GetAxisRaw("Horizontal"); // -1 is left
+        // vertical = Input.GetAxisRaw("Vertical"); // -1 is down
+        horizontal = joystick.Horizontal;
+        vertical = joystick.Vertical;
     }
 
     void FixedUpdate()

@@ -4,18 +4,30 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class scenemanager : MonoBehaviour
 {
-    
+    // public Animator animator;
+    // static private int levelIndex;
     public void MainMenuButton(){
-        SceneManager.LoadScene("MainMenu");
+    
+        // StartCoroutine(LoadLevel(1));
+        SceneManager.LoadScene(1);
     }
     public void GamePlayButton(){
-        SceneManager.LoadScene("GameScene");
+        
+        // StartCoroutine(LoadLevel(0));
+        SceneManager.LoadScene(0);
+        
     }
 
-    public void TutorialButton(){
-        SceneManager.LoadScene("TutorialScene");
-    }
     public void RestartButton(){
-        SceneManager.LoadScene("GameScene");
+        // StartCoroutine(LoadLevel(0));
+        SceneManager.LoadScene(0);
+    
+        
     }
+    
+    // IEnumerator LoadLevel(int index){
+    //     animator.SetTrigger("Start");
+    //     yield return new WaitForSeconds(1f);
+    //     SceneManager.LoadScene(index);
+    // }
 }

@@ -10,6 +10,7 @@ public class gun_aim : MonoBehaviour
     [HideInInspector]
     public Vector2 dir_vector;
     private float target_angle;
+    public Joystick aim_joystick;
     Rigidbody2D gun_rb;
     [SerializeField]
     // private float time = 100f;
@@ -20,10 +21,13 @@ public class gun_aim : MonoBehaviour
     }
     private void Update()
     {
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 dir = (Vector2)transform.position - mousePos;
+        float horizontal = aim_joystick.Horizontal;
+        float vertical = aim_joystick.Vertical;
+        // Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        // Vector2 dir = (Vector2)transform.position - mousePos;
+        Vector2 dir = new Vector2(horizontal, vertical);
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle+180));
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 
     }
 }
