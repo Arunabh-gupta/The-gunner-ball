@@ -10,9 +10,10 @@ public class player_health : MonoBehaviour
     public health_bar playerBar;
     // for adding health bar
     float timestamp = 0.0f;
-    
+    [SerializeField] AudioClip player_hit;
+    [SerializeField] AudioClip player_destroy;
     bool player_alive = true;
-    [SerializeField]gameOverScreen gameoverscreen;
+    [SerializeField] gameOverScreen gameoverscreen;
     private void Start()
     {
 
@@ -20,13 +21,17 @@ public class player_health : MonoBehaviour
         currentHealth = healths.playerHealth;
         playerBar.SetMaxHealth(MaxHealth);
     }
-    private void Update() {
-        if(player_alive == false){
+    private void Update()
+    {
+        if (player_alive == false)
+        {
             float hs = PlayerPrefs.GetFloat("HighScore");
-            if(point_system.instance.point_count > hs){
+            if (point_system.instance.point_count > hs)
+            {
                 hs = point_system.instance.point_count;
-                PlayerPrefs.SetFloat("HighScore",hs);
+                PlayerPrefs.SetFloat("HighScore", hs);
             }
+            MusicManager.instance.Play(player_destroy);
             gameoverscreen.setup();
         }
     }
@@ -36,6 +41,7 @@ public class player_health : MonoBehaviour
     {
         if (other.gameObject.tag == "canon bullet")
         {
+            MusicManager.instance.Play(player_hit);
             currentHealth -= other.gameObject.GetComponent<canon_bullet>().damage;
             playerBar.setHealth(currentHealth);//updating the fill of the health bar
             print("player currenthealth: " + currentHealth);
@@ -49,6 +55,7 @@ public class player_health : MonoBehaviour
         }
         if (other.gameObject.tag == "mobile enemy bullet")
         {
+            MusicManager.instance.Play(player_hit);
             currentHealth -= other.gameObject.GetComponent<canon_bullet>().damage;
             playerBar.setHealth(currentHealth);//updating the fill of the health bar
             print("player currenthealth: " + currentHealth);
@@ -62,6 +69,7 @@ public class player_health : MonoBehaviour
         }
         if (other.gameObject.tag == "projectile")
         {
+            MusicManager.instance.Play(player_hit);
             currentHealth -= other.gameObject.GetComponent<projectile>().projectileDamage;
             playerBar.setHealth(currentHealth);//updating the fill of the health bar
             print("player currenthealth: " + currentHealth);
@@ -75,6 +83,7 @@ public class player_health : MonoBehaviour
         }
         if (other.gameObject.tag == "boss1bullet")
         {
+            MusicManager.instance.Play(player_hit);
             currentHealth -= other.gameObject.GetComponent<bullet>().damage;
             playerBar.setHealth(currentHealth);//updating the fill of the health bar
             print("player currenthealth: " + currentHealth);
@@ -91,6 +100,7 @@ public class player_health : MonoBehaviour
         {
             if (other.gameObject.tag == "missile1")
             {
+                MusicManager.instance.Play(player_hit);
                 currentHealth -= other.gameObject.GetComponent<homing_missile>().damage1;
                 print("player currenthealth: " + currentHealth);
                 playerBar.setHealth(currentHealth);//updating the fill of the health bar
@@ -104,6 +114,7 @@ public class player_health : MonoBehaviour
             }
             if (other.gameObject.tag == "missile2")
             {
+                MusicManager.instance.Play(player_hit);
                 currentHealth -= other.gameObject.GetComponent<homing_missile>().damage2;
                 playerBar.setHealth(currentHealth);//updating the fill of the health bar
                 print("player currenthealth: " + currentHealth);

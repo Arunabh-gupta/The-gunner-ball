@@ -246,6 +246,8 @@ MonoBehaviour:
   shootpoint: {fileID: 2560326695759009606}
   looking_Radius: 5
   enemy_bullet_prefab: {fileID: 7666119384075112396, guid: cf02e4629db67f142865c236d0372c8b, type: 3}
+  enemy_firing_sound: {fileID: 8300000, guid: a96ff64861eaf3442919e5b02ea9e936, type: 3}
+  enemy_death: {fileID: 8300000, guid: 276a4ba9657abd448a35974ab3d2ad4e, type: 3}
   enemy_bullet_speed: 10
   enemy_rotation_speed: 250
   enemy_movement_speed: 4

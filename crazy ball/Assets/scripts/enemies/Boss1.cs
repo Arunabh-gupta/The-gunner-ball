@@ -67,7 +67,7 @@ public class Boss1 : MonoBehaviour
     // firing system of the guns in boss 1. Very similar to the every gun in the game
 
     // Boss damage
-    
+    [SerializeField] AudioClip boss_destroy;
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "player bullet")
@@ -77,7 +77,7 @@ public class Boss1 : MonoBehaviour
             print(point_system.instance.point_count);
             if (Currenthealth <= 0)
             {
-
+                MusicManager.instance.Play(boss_destroy);
                 ParticleSystem effect = Instantiate(GameObject.Find("particleManager").GetComponent<particleSystemManager>().boss1_destruction, transform.position, Quaternion.identity);
                 effect.Play();
                 basic_enemy_spawner.enemy_spawn_active = true;

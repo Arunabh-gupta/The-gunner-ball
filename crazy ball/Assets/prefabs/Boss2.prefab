@@ -2228,6 +2228,7 @@ MonoBehaviour:
   Projectile_speed: 10
   Currenthealth: 120
   Maxhealth: 120
+  boss_destroy: {fileID: 8300000, guid: 6da3e6114b454c14f96346ff4f3885a3, type: 3}
 --- !u!233 &-3380476549575269109
 HingeJoint2D:
   m_ObjectHideFlags: 0

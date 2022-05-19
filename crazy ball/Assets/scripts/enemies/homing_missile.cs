@@ -27,15 +27,18 @@ public class homing_missile : MonoBehaviour
         rb_missile.velocity = transform.up * speed;
         }
     }
-
+    
+    [SerializeField] AudioClip missile_destroying;
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.gameObject.tag == "player bullet" || other.gameObject.tag == "Player"){
             if(gameObject.tag == "missile1"){
                 ParticleSystem effect = Instantiate(GameObject.Find("particleManager").GetComponent<particleSystemManager>().missile1_destroy, transform.position, Quaternion.identity);
+                MusicManager.instance.Play(missile_destroying);
                     effect.Play();
                     Destroy(gameObject);
             }
             if(gameObject.tag == "missile2"){
+                MusicManager.instance.Play(missile_destroying);
                 ParticleSystem effect = Instantiate(GameObject.Find("particleManager").GetComponent<particleSystemManager>().missile2_destroy, transform.position, Quaternion.identity);
                     effect.Play();
                     Destroy(gameObject);

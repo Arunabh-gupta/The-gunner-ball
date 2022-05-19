@@ -18,7 +18,7 @@ public class Boss2 : MonoBehaviour
     [SerializeField] private float Maxhealth = healths.Boss2Health;
     //health system of the boss
 
-    
+
     private void Start()
     {
         DelayPerShot = Gun_Container.Boss2Projectile.GetFireRate();
@@ -50,19 +50,18 @@ public class Boss2 : MonoBehaviour
         }
     }
     // firing system of Boss2
-
+    [SerializeField] AudioClip boss_destroy;
     // boss2 damage system
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "player bullet")
         {
             Currenthealth -= other.gameObject.GetComponent<bullet>().damage;
-            point_system.instance.point_count+=other.gameObject.GetComponent<bullet>().damage * 10;
-            // print(point_system.instance.point_count);
-            // print("boss 2 health: "+Currenthealth);
-            if (Currenthealth <= 0)
+            point_system.instance.point_count += other.gameObject.GetComponent<bullet>().damage * 10;
 
+            if (Currenthealth <= 0)
             {
+                MusicManager.instance.Play(boss_destroy);
                 ParticleSystem effect = Instantiate(GameObject.Find("particleManager").GetComponent<particleSystemManager>().boss2_destruction, transform.position, Quaternion.identity);
                 effect.Play();
                 basic_enemy_spawner.enemy_spawn_active = true;

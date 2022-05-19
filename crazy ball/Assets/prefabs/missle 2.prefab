@@ -124,7 +124,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.12, y: 5.12}
+    oldSize: {x: 0.5688889, y: 0.5688889}
     newSize: {x: 5.12, y: 5.12}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -171,6 +171,7 @@ MonoBehaviour:
   player: {fileID: 0}
   rotate_speed: 200
   speed: 2
+  missile_destroying: {fileID: 8300000, guid: 276a4ba9657abd448a35974ab3d2ad4e, type: 3}
 --- !u!1001 &278091180311706978
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -4,30 +4,38 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class scenemanager : MonoBehaviour
 {
-    // public Animator animator;
-    // static private int levelIndex;
-    public void MainMenuButton(){
-    
-        // StartCoroutine(LoadLevel(1));
+    public GameObject confirmation_screen;
+    [SerializeField] AudioClip click_sound;
+    public void MainMenuButton()
+    {
+        MusicManager.instance.Play(click_sound);
         SceneManager.LoadScene(1);
     }
-    public void GamePlayButton(){
-        
-        // StartCoroutine(LoadLevel(0));
+    public void GamePlayButton()
+    {
+        MusicManager.instance.Play(click_sound);
         SceneManager.LoadScene(0);
-        
     }
 
-    public void RestartButton(){
-        // StartCoroutine(LoadLevel(0));
+    public void RestartButton()
+    {
+        MusicManager.instance.Play(click_sound);
         SceneManager.LoadScene(0);
-    
-        
     }
-    
-    // IEnumerator LoadLevel(int index){
-    //     animator.SetTrigger("Start");
-    //     yield return new WaitForSeconds(1f);
-    //     SceneManager.LoadScene(index);
-    // }
+    public void QuitButton()
+    {
+        MusicManager.instance.Play(click_sound);
+        LeanTween.moveLocalY(confirmation_screen, 0f, 1f).setEaseOutElastic();
+    }
+
+    public void CancelButton()
+    {
+        MusicManager.instance.Play(click_sound);
+        LeanTween.moveLocalY(confirmation_screen, -800f, 1f).setEaseOutElastic();
+    }
+    public void FinalQuitButton()
+    {
+        print("App is closed now");
+        Application.Quit();
+    }
 }

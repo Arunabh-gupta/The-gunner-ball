@@ -6,11 +6,10 @@ public class enemy_canon : MonoBehaviour
 {
     [SerializeField] private float currentHealth;
 
-    // for popping text animation
-    [SerializeField] GameObject damage_indicator;
+    [SerializeField] private AudioClip enemy_firing_sound, enemy_death;
 
 
-    // for popping text animation
+   
     private GameObject target_player;
     [SerializeField]
     private Transform shootpoint;
@@ -49,9 +48,7 @@ public class enemy_canon : MonoBehaviour
     private void Update()
     {
 
-        // if(target_player==null){
-        //     Destroy(gameObject, 2f);
-        // }
+        
         if(target_player!=null){
         target_dir = target_player.transform.position - transform.position;
 
@@ -79,6 +76,7 @@ public class enemy_canon : MonoBehaviour
         timestamp = DelayPerShot + Time.time;
         GameObject canon_bullet = Instantiate(canon_bullet_prefab, (Vector2)shootpoint.position, Quaternion.identity);
         canon_bullet.GetComponent<canon_bullet>().damage = Gun_Container.canon.GetDamage();
+        // MusicManager.instance.Play(enemy_firing_sound);
         // smoke effect particle effect
         ParticleSystem smoke_effect = Instantiate(GameObject.Find("particleManager").GetComponent<particleSystemManager>().bullet_smoke, shootpoint.position, Quaternion.identity);
         smoke_effect.Play();
@@ -110,6 +108,7 @@ public class enemy_canon : MonoBehaviour
             
             if (currentHealth <= 0)
             {
+                MusicManager.instance.Play(enemy_death);
                 // just one line for particle system
 
                 ParticleSystem effect = Instantiate(GameObject.Find("particleManager").GetComponent<particleSystemManager>().canon_destruction, transform.position, Quaternion.identity);

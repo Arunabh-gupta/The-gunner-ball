@@ -17,6 +17,9 @@ public class mobile_enemy : MonoBehaviour
     private float looking_Radius = 3f;
     [SerializeField]
     private GameObject enemy_bullet_prefab;
+
+    [SerializeField] private AudioClip enemy_firing_sound, enemy_death;
+
     [SerializeField]
     private float enemy_bullet_speed;
     [SerializeField]
@@ -70,6 +73,7 @@ public class mobile_enemy : MonoBehaviour
     {
         timestamp = DelayPerShot + Time.time;
         GameObject canon_bullet = Instantiate(enemy_bullet_prefab, (Vector2)shootpoint.position, Quaternion.identity);
+        // MusicManager.instance.Play(enemy_firing_sound);
         // smoke effect particle effect
         ParticleSystem smoke_effect = Instantiate(GameObject.Find("particleManager").GetComponent<particleSystemManager>().bullet_smoke, shootpoint.position, Quaternion.identity);
         smoke_effect.Play();
@@ -91,6 +95,7 @@ public class mobile_enemy : MonoBehaviour
             
             if (currentHealth <= 0)
             {
+                MusicManager.instance.Play(enemy_death);
                 ParticleSystem effect = Instantiate(GameObject.Find("particleManager").GetComponent<particleSystemManager>().enemy_destruction, transform.position, Quaternion.identity);
                 effect.Play();
                 // for destroying the particle gameobject stop action setting of particle system is set to destroy

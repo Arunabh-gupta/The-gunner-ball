@@ -10,6 +10,8 @@ public class gun_firing : MonoBehaviour
     public GameObject bullet_prefab; // actual prefab for the bullet
     [SerializeField] private Transform Nozzle; // the point where the bullet will be instantiated
 
+    [SerializeField] AudioClip firing_sound; // firing sound effect
+
     // bullet aim joystick
     public Joystick bullet_aim_joystick;
     float horizontal = 0;
@@ -23,6 +25,8 @@ public class gun_firing : MonoBehaviour
     private float gunChange_timestamp = 0f;
     private float gunChange_timeperiod = 10f;
     private bool gunChange_active;
+
+    // gun change sounds
     private void Start()
     {
 
@@ -66,7 +70,7 @@ public class gun_firing : MonoBehaviour
         {
             timestamp = Time.time + perShotDelay;
             GameObject bullet = Instantiate(bullet_prefab, Nozzle.position, Quaternion.identity);
-
+            MusicManager.instance.Play(firing_sound);
             // smoke effect particle effect
             ParticleSystem smoke_effect = Instantiate(GameObject.Find("particleManager").GetComponent<particleSystemManager>().bullet_smoke, Nozzle.position, Quaternion.identity);
             smoke_effect.Play();
