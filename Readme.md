@@ -36,4 +36,14 @@ the animations and was accessed whenever needed using Unity API.
 
 UI ELEMENTS : 
   - Canvas Component : Unity's canvas gameobject is used to create all the UI elements of the game. In Unity, the Canvas is also a Game Object with a Canvas component attached to it. This Canvas component acts as the master of all UI elements on the screen. That's why all UI elements are child gameObject of the Canvas gameObject.
-     
+
+## SCREENSHOTS
+
+![sc1](https://user-images.githubusercontent.com/87766488/180740733-384a5bf7-4a17-4dc8-9362-14de1f98bce4.png)
+![sc2](https://user-images.githubusercontent.com/87766488/180740877-4629cf91-83ab-4cd3-9199-26e8f8e38d6a.png)
+![sc4](https://user-images.githubusercontent.com/87766488/180740955-dbd9237a-54d4-4f5e-ba5e-1a56474b9682.png)
+![sc5](https://user-images.githubusercontent.com/87766488/180741145-5a5d3ba4-90d4-484f-abe0-63bdecac85b5.png)
+
+## DOWNLOAD LINK
+
+[Download the android and desktop version(Windows) from itch.io](https://arun-game-dev.itch.io/the-gunner-man)
