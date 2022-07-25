@@ -37,6 +37,8 @@ the animations and was accessed whenever needed using Unity API.
 UI ELEMENTS : 
   - Canvas Component : Unity's canvas gameobject is used to create all the UI elements of the game. In Unity, the Canvas is also a Game Object with a Canvas component attached to it. This Canvas component acts as the master of all UI elements on the screen. That's why all UI elements are child gameObject of the Canvas gameObject.
 
+JOYSTICK : 
+  - For joysticks, a free joystick package is used to gove controls on an android device.
 ## SCREENSHOTS
 
 ![sc1](https://user-images.githubusercontent.com/87766488/180740733-384a5bf7-4a17-4dc8-9362-14de1f98bce4.png)
